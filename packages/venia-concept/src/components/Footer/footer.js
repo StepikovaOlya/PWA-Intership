@@ -114,3 +114,4 @@ Footer.propTypes = {
         root: string
     })
 };
+

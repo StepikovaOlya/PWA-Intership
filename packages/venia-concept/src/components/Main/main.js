@@ -36,3 +36,4 @@ Main.propTypes = {
     }),
     isMasked: bool
 };
+
