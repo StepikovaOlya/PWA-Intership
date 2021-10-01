@@ -29,7 +29,7 @@
 :global(select),
 :global(textarea) {
     color: rgb(var(--venia-global-color-text));
-    font-family: var(--venia-global-fontFamily-sansSerif);
+    font-family: var(--drexel-global-fontFamily-serif);
 }
 
 :global(body) {
