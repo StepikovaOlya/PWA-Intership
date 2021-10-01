@@ -7,8 +7,9 @@ import { useFooter } from '@magento/peregrine/lib/talons/Footer/useFooter';
 
 import Logo from '@magento/venia-ui/lib/components/Logo';
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import defaultClasses from '@magento/venia-ui/lib/components/Footer/footer.css';
+import defaultClasses from './footer.css';
 import { DEFAULT_LINKS, LOREM_IPSUM } from "@magento/venia-ui/lib/components/Footer/sampleData";
+import Button from '../Button';
 
 const Footer = props => {
     const { links } = props;
@@ -44,14 +45,31 @@ const Footer = props => {
         );
     });
 
+    const testLabel = 'testLabel'
+
     return (
         <footer className={classes.root}>
             <div className={classes.links}>
-                <div className={classes.link}>
-                    <Link to="/foo">
-                        <span className={classes.label}>Foo Demo Page</span>
-                    </Link>
-                </div>
+                <Button type={'button'} priority={'high'} >High</Button>
+                <Button type={'button'} priority={'low'} >Low</Button>
+                <Button type={'button'} priority={'normal'} >Normal</Button>
+                <ul>
+                    <li className={classes.link}>
+                        <Link to={'/foo'}>
+                            <span className="label">Link Global</span>
+                        </Link>
+                    </li>
+                    <li className={classes.link}>
+                        <Link to={'/foo'}>
+                            <span className={classes.label}>Link Variable</span>
+                        </Link>
+                    </li>
+                    <li className={classes.link}>
+                        <Link to={'/foo'}>
+                            <span className={classes[testLabel]}>Link Classes</span>
+                        </Link>
+                    </li>
+                </ul>
                 {linkGroups}
                 <div className={classes.callout}>
                     <h3 className={classes.calloutHeading}>
