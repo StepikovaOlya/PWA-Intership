@@ -148,6 +148,35 @@
 }
 
 .label {
-    color: var(--drexel-theme-link-color-classes);
+    color: var(--drexel-theme-color);
+}
+
+/* social links style */
+
+.socialLinks svg {
+    color: var(--drexel-theme-sociallinks-color);
+    cursor: pointer;
+    height: 16px;
+}
+
+.socialinks svg:hover {
+    color: var(--drexel-theme-color);
+}
+
+.socialLinks .behance svg {
+    width: 19px;
+}
+
+.socialLinks .google svg,
+.socialLinks .skype svg {
+    width: 15px;
+}
+
+.socialLinks .facebook svg {
+    width: 10px;
+}
+
+.socialLinks .twitter svg {
+    width: 16px;
 }
 
