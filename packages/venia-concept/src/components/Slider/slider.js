@@ -1,12 +1,14 @@
 import React, { Children } from 'react';
 import { arrayOf, bool, number, oneOf, shape, string } from 'prop-types';
-import SlickSlider from 'react-slick';
 import defaultClasses from './slider.css';
 import { useStyle } from '@magento/venia-ui/lib/classify';
-import { jarallax } from 'jarallax';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+import SwiperCore, { Autoplay, Keyboard, Mousewheel, Navigation, Pagination } from 'swiper/core';
+SwiperCore.use([ Autoplay, Keyboard, Mousewheel, Navigation, Pagination ]);
 
 /**
- * Page Builder Slider component.
+ * Override Page Builder Slider component.
  *
  * This component is part of the Page Builder / PWA integration. It can be consumed without Page Builder.
  *
@@ -17,63 +19,59 @@ import { jarallax } from 'jarallax';
  *
  * @returns {React.Element} A React component that displays a Slider which contains slides.
  */
+
 const Slider = props => {
+    /* console.log(props); - properties that come from the object */
     const classes = useStyle(defaultClasses, props.classes);
 
     const {
-        minHeight,
         autoplay,
         autoplaySpeed,
-        fade,
-        infinite,
-        showArrows,
-        showDots,
-        textAlign,
+        children,
+        cssClasses = [],
         border,
         borderColor,
         borderWidth,
         borderRadius,
-        marginTop,
-        marginRight,
+        fade,
+        infinite,
         marginBottom,
         marginLeft,
-        paddingTop,
-        paddingRight,
+        marginRight,
+        marginTop,
+        minHeight,
         paddingBottom,
         paddingLeft,
-        cssClasses = [],
-        children
+        paddingRight,
+        paddingTop,
+        showArrows,
+        showDots,
+        textAlign
     } = props;
 
     const dynamicStyles = {
-        minHeight,
-        textAlign,
         border,
         borderColor,
-        borderWidth,
         borderRadius,
-        marginTop,
-        marginRight,
+        borderWidth,
+        textAlign,
         marginBottom,
         marginLeft,
-        paddingTop,
-        paddingRight,
+        marginRight,
+        marginTop,
+        minHeight,
         paddingBottom,
-        paddingLeft
+        paddingLeft,
+        paddingRight,
+        paddingTop
     };
+
     const jarallaxInstances = {};
     const sliderSettings = {
-        dots: showDots,
-        arrows: showArrows,
-        afterChange: () => {
-            Object.keys(jarallaxInstances).map(key => {
-                jarallax(jarallaxInstances[key].element, 'onScroll');
-            });
-        },
-        infinite,
-        autoplay,
-        autoplaySpeed,
-        fade
+        autoplay: autoplay ? { delay: autoplaySpeed ? autoplaySpeed : 5000 } : false,
+        loop: infinite ? 'infinite' : '',
+        navigation: showArrows,
+        pagination: { clickable: showDots }
     };
 
     // Override classes on banner to ensure min height is respected
@@ -96,11 +94,14 @@ const Slider = props => {
     });
 
     return (
-        <div
-            className={[classes.root, ...cssClasses].join(' ')}
-            style={dynamicStyles}
-        >
-            <SlickSlider {...sliderSettings}>{children}</SlickSlider>
+        <div className={[classes.root, ...cssClasses].join(' ')} style={dynamicStyles}>
+            <Swiper {...sliderSettings}>
+                {children.map((item, index) => (
+                    <SwiperSlide key={index}>
+                        {item}
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
     );
 };
@@ -139,6 +140,10 @@ const Slider = props => {
  * @property {Array} cssClasses List of CSS classes to be applied to the component
  */
 Slider.propTypes = {
+    appearance: oneOf(['default']),
+    autoplay: bool,
+    autoplaySpeed: number,
+    cssClasses: arrayOf(string),
     classes: shape({
         root: string,
         bannerRoot: string,
@@ -146,28 +151,24 @@ Slider.propTypes = {
         bannerWrapper: string,
         bannerPosterOverlay: string
     }),
-    appearance: oneOf(['default']),
-    minHeight: string,
-    autoplay: bool,
-    autoplaySpeed: number,
-    fade: bool,
-    infinite: bool,
-    showArrows: bool,
-    showDots: bool,
-    textAlign: string,
     border: string,
     borderColor: string,
-    borderWidth: string,
     borderRadius: string,
-    marginTop: string,
-    marginRight: string,
+    borderWidth: string,
+    fade: bool,
+    infinite: bool,
     marginBottom: string,
     marginLeft: string,
-    paddingTop: string,
-    paddingRight: string,
+    marginRight: string,
+    marginTop: string,
+    minHeight: string,
     paddingBottom: string,
     paddingLeft: string,
-    cssClasses: arrayOf(string)
+    paddingRight: string,
+    paddingTop: string,
+    showArrows: bool,
+    showDots: bool,
+    textAlign: string
 };
 
 export default Slider;

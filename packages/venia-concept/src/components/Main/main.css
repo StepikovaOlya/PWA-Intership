@@ -36,3 +36,27 @@
         min-height: 72rem;
     }
 }
+
+/*custom style for home page*/
+
+.page {
+    max-width: none;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--drexel-theme-color);
+    margin: 50px auto;
+    text-align: center;
+}
+
+:global .swiper-wrapper > .swiper-slide.clearance {
+    background-image: url(./home3.jpg);
+    height: 800px;
+}
+
+:global .swiper-wrapper > .swiper-slide.armchair {
+    background-image: url(./home4.jpg);
+    height: 800px;
+}
