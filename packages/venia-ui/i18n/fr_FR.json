@@ -367,7 +367,7 @@
     "shippingRadios.errorLoading": "Error loading shipping methods. Please ensure a shipping address is set and try again.",
     "shippingSummary.estimatedShipping": "Estimated Shipping",
     "shippingSummary.shipping": "Shipping",
-    "Se Connecter": "Se Connecter",
+    "Sign In": "Se Connecter",
     "signIn.createAccountText": "Create an Account",
     "signIn.emailAddressText": "Email address",
     "signIn.forgotPasswordText": "Forgot Password?",
