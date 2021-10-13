@@ -2,23 +2,23 @@ import React, { Fragment, Suspense } from 'react';
 import { shape, string } from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
-import Logo from '../Logo';
+import Logo from '@magento/venia-ui/lib/components/Logo';
 import AccountTrigger from './accountTrigger';
-import CartTrigger from './cartTrigger';
-import NavTrigger from './navTrigger';
-import SearchTrigger from './searchTrigger';
-import OnlineIndicator from './onlineIndicator';
+import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
+import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
+import SearchTrigger from '@magento/venia-ui/lib/components/Header/searchTrigger';
+import OnlineIndicator from '@magento/venia-ui/lib/components/Header/onlineIndicator';
 import { useHeader } from '@magento/peregrine/lib/talons/Header/useHeader';
 import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 
-import { useStyle } from '../../classify';
+import { useStyle } from '@magento/venia-ui/lib/classify';
 import defaultClasses from './header.css';
-import PageLoadingIndicator from '../PageLoadingIndicator';
-import StoreSwitcher from './storeSwitcher';
-import CurrencySwitcher from './currencySwitcher';
-import MegaMenu from '../MegaMenu';
+import PageLoadingIndicator from '@magento/venia-ui/lib/components/PageLoadingIndicator';
+import StoreSwitcher from '@magento/venia-ui/lib/components/Header/storeSwitcher';
+import CurrencySwitcher from '@magento/venia-ui/lib/components/Header/currencySwitcher';
+import MegaMenu from '@magento/venia-ui/lib/components/MegaMenu';
 
-const SearchBar = React.lazy(() => import('../SearchBar'));
+const SearchBar = React.lazy(() => import('@magento/venia-ui/lib/components/SearchBar'));
 
 const Header = props => {
     const {

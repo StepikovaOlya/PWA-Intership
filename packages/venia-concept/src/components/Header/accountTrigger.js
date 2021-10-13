@@ -9,7 +9,7 @@ import AccountChip from '../AccountChip';
 
 import defaultClasses from './accountTrigger.css';
 
-const AccountMenu = React.lazy(() => import('../AccountMenu'));
+const AccountMenu = React.lazy(() => import('@magento/venia-ui/lib/components/AccountMenu'));
 
 /**
  * The AccountTrigger component is the call to action in the site header
@@ -46,7 +46,7 @@ const AccountTrigger = props => {
                     <AccountChip
                         fallbackText={formatMessage({
                             id: 'accountTrigger.buttonFallback',
-                            defaultMessage: 'Sign In'
+                            defaultMessage: 'Log In'
                         })}
                         shouldIndicateLoading={true}
                     />

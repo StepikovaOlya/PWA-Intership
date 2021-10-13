@@ -6,9 +6,9 @@ import { Loader, User as AccountIcon } from 'react-feather';
 import { useAccountChip } from '@magento/peregrine/lib/talons/AccountChip/useAccountChip';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 
-import Icon from '../Icon';
+import Icon from '@magento/venia-ui/lib/components/Icon';
 import defaultClasses from './accountChip.css';
-import { GET_CUSTOMER_DETAILS } from './accountChip.gql';
+import { GET_CUSTOMER_DETAILS } from '@magento/venia-ui/lib/components/AccountChip/accountChip.gql';
 
 /**
  * The AccountChip component shows an icon next to some text.

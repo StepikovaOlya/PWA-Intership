@@ -159,7 +159,7 @@
     height: 16px;
 }
 
-.socialinks svg:hover {
+.socialLinks svg:hover {
     color: var(--drexel-theme-color);
 }
 

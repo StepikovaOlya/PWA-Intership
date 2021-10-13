@@ -4,8 +4,9 @@
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: auto 1fr;
+    text-transform: uppercase;
 }
 
 .loader {
-    composes: indicator from '../LoadingIndicator/indicator.css';
+    composes: indicator from '~@magento/venia-ui/lib/components/LoadingIndicator/indicator.css';
 }
