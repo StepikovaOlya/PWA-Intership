@@ -12,6 +12,7 @@
     --drexel-theme-link-color-variables: #ff0000;
     --drexel-theme-link-color-classes: #33FFBD;
     --drexel-theme-sociallinks-color: #888888;
+    --drexel-theme-menu-color: rgba(255, 255, 255, .90);
 
     /* color */
     --venia-global-color-blue-100: 194 200 255;
