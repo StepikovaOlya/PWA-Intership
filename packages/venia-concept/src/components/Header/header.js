@@ -1,8 +1,8 @@
-import React, { Fragment, Suspense } from 'react';
+import React, { Fragment, Suspense, useEffect, useRef } from 'react';
 import { shape, string } from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 
-import Logo from '@magento/venia-ui/lib/components/Logo';
+import Logo from '../Logo';
 import AccountTrigger from './accountTrigger';
 import CartTrigger from '@magento/venia-ui/lib/components/Header/cartTrigger';
 import NavTrigger from '@magento/venia-ui/lib/components/Header/navTrigger';
@@ -33,6 +33,27 @@ const Header = props => {
 
     const classes = useStyle(defaultClasses, props.classes);
     const rootClass = isSearchOpen ? classes.open : classes.closed;
+
+    // added variable for observer
+    const stickyRef = useRef(null);
+    // added function for sticky header
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            entries => {
+                if (!entries[0].isIntersecting) {
+                    stickyRef.current.classList.add(classes.sticky)
+                } else {
+                    stickyRef.current.classList.remove(classes.sticky)
+                }
+            },
+            {threshold: [1]}
+        );
+
+        if (stickyRef) {
+            observer.observe(stickyRef.current);
+        }
+    }, [stickyRef]);
+
     const searchBarFallback = (
         <div className={classes.searchFallback} ref={searchRef}>
             <div className={classes.input}>
@@ -59,7 +80,7 @@ const Header = props => {
                     <CurrencySwitcher />
                 </div>
             </div>
-            <header className={rootClass}>
+            <header className={rootClass} ref={stickyRef}>
                 <div className={classes.toolbar}>
                     <div className={classes.primaryActions}>
                         <NavTrigger />

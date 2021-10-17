@@ -1,9 +1,9 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { useStyle } from '../../classify';
-import Image from '../Image';
-import logo from './VeniaLogo.svg';
+import { useStyle } from '@magento/venia-ui/lib/classify';
+import Image from '@magento/venia-ui/lib/components/Image';
+import logo from './DrexelLogo.png';
 
 /**
  * A component that renders a logo in the header.
@@ -20,7 +20,7 @@ const Logo = props => {
     const classes = useStyle({}, props.classes);
     const { formatMessage } = useIntl();
 
-    const title = formatMessage({ id: 'logo.title', defaultMessage: 'Venia' });
+    const title = formatMessage({ id: 'logo.title', defaultMessage: 'Drexel' });
 
     return (
         <Image
@@ -53,8 +53,8 @@ Logo.propTypes = {
 };
 
 Logo.defaultProps = {
-    height: 18,
-    width: 102
+    height: 46,
+    width: 176
 };
 
 export default Logo;
