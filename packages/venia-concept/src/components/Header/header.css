@@ -4,7 +4,8 @@
     display: grid;
     grid-auto-columns: 100%;
     justify-items: center;
-    top: -1px;
+    position: relative;
+    top: 0;
     width: 100%;
     z-index: 10;
     --header-height: 5rem;
@@ -13,6 +14,7 @@
 .sticky {
     background-color: var(--drexel-theme-menu-color);
     position: sticky;
+    top: -1px;
 }
 
 .switchersContainer {

@@ -7,6 +7,10 @@ export const GET_STORE_CONFIG_DATA = gql`
             code
             store_name
             store_group_name
+            logo_alt
+            logo_width
+            logo_height
+            header_logo_src
         }
     }
 `;

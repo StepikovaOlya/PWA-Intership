@@ -1,60 +1,39 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import PropTypes from 'prop-types';
+import { number, shape, string } from 'prop-types';
 import { useStyle } from '@magento/venia-ui/lib/classify';
 import Image from '@magento/venia-ui/lib/components/Image';
-import logo from './DrexelLogo.png';
+import logoImages from '../../images/logo/logo.png';
 
-/**
- * A component that renders a logo in the header.
- *
- * @typedef Logo
- * @kind functional component
- *
- * @param {props} props React component props
- *
- * @returns {React.Element} A React component that displays a logo.
- */
 const Logo = props => {
-    const { height, width } = props;
+    const { logo } = props;
     const classes = useStyle({}, props.classes);
     const { formatMessage } = useIntl();
-
     const title = formatMessage({ id: 'logo.title', defaultMessage: 'Drexel' });
 
     return (
         <Image
-            alt={title}
+            alt={logo.logo_alt ? logo.logo_alt : title}
             classes={{ image: classes.logo }}
-            height={height}
-            src={logo}
-            title={title}
-            width={width}
+            height={logo.logo_height ? logo.logo_height : 46}
+            src={logo.header_logo_src ? '/media/logo/' + logo.header_logo_src : logoImages}
+            title={logo.logo_alt ? logo.logo_alt : title}
+            width={logo.logo_width ? logo.logo_width : 176}
         />
     );
 };
 
-/**
- * Props for {@link Logo}
- *
- * @typedef props
- *
- * @property {Object} classes An object containing the class names for the
- * Logo component.
- * @property {string} classes.logo classes for logo
- * @property {number} height the height of the logo.
- */
 Logo.propTypes = {
-    classes: PropTypes.shape({
-        logo: PropTypes.string
+    classes: shape({
+        logo: string
     }),
-    height: PropTypes.number,
-    width: PropTypes.number
+    logo: shape({
+        logo_alt: string,
+        logo_width: number,
+        logo_height: number,
+        header_logo_src: string
+    })
 };
 
-Logo.defaultProps = {
-    height: 46,
-    width: 176
-};
 
 export default Logo;

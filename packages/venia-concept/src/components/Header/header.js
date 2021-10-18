@@ -22,11 +22,14 @@ const SearchBar = React.lazy(() => import('@magento/venia-ui/lib/components/Sear
 
 const Header = props => {
     const {
+        logo,
+        error,
         handleSearchTriggerClick,
         hasBeenOffline,
         isOnline,
         isPageLoading,
         isSearchOpen,
+        loading,
         searchRef,
         searchTriggerRef
     } = useHeader();
@@ -94,7 +97,9 @@ const Header = props => {
                         to={resourceUrl('/')}
                         className={classes.logoContainer}
                     >
-                        <Logo classes={{ logo: classes.logo }} />
+                        {(!loading && !error) ? (
+                            <Logo classes={{ logo: classes.logo }} logo={logo} />
+                        ) : null}
                     </Link>
                     <MegaMenu />
                     <div className={classes.secondaryActions}>
